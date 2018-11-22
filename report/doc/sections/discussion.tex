@@ -1,0 +1,12 @@
+\section{Discussion}
+
+Judging from the results in the previous section, our step-wise optimization approach yielded counter-intuitive findings as well as notable improvements in accuracy.
+
+We want to highlight two unexpected findings and give possible explanations for them:
+
+First, we wrongly assumed that most words removed by preprocessing methods 3 and W are neutral regarding sentiment and thus not helpful in classification. Possibly, removing many words could have the effect that context windows become more diverse. If co-occurrence counts are smaller, vector embeddings  become more imprecise, which would explain the drop in classification accuracy.  
+
+Second, the benefit of preprocessing methods is heavily dependent on the used classifier. Source of these differences could be the categorically different \textit{modus operandi} of the two classifiers: Whereas LR condenses all vectors relating to tweet words into a single vector, RNN processes individual word vectors in the word order of the tweet. Structure may render even insignificant words more relevant. For example, prepositions are not very meaningful on their own but become more meaningful when incorporated in a sentence structure.
+
+On the contrary, the benefit of single embedding methods is very unambiguous. Not only did \textit{word2vec} embeddings lead to better results, but their production was also far faster. However, this observation can be partially explained by the fact that we used the C code to produce $word2vec$ embeddings and Python code to produce $GloVe$ embeddings.
+

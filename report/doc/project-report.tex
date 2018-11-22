@@ -1,0 +1,33 @@
+\documentclass[10pt,conference,compsocconf]{styles/IEEEtran}
+\input{styles/dependencies}
+
+
+\begin{document}	
+\title{\vspace{-1.5cm}Preprocessing, Word-Vector Embedding, and Classification\\ for Twitter Sentiment Analysis}
+\author{
+  \IEEEauthorblockN{Andrea Canonica\\canandre@student.ethz.ch}
+  \and
+  \IEEEauthorblockN{Oliver De La Cruz\\deoliver@student.ethz.ch}
+  \and
+  \IEEEauthorblockN{Claudio R\"othlisberger\\rclaudio@student.ethz.ch}
+  \and
+  \IEEEauthorblockN{Simon Scherrer\\simonsch@student.ethz.ch}
+}
+\maketitle
+
+\begin{abstract}
+  The automatic analysis and interpretation of text is an active area of research in natural language processing (NLP) and machine learning (ML). We strive to contribute to the problem of \textit{sentiment anlysis}, i.e. the identification of the general emotion expressed in a text.
+  
+  We developed a multi-step method for sentiment analysis of tweets \footnote{Messages posted on the social network service \href{https://www.twitter.com}{Twitter}.}, consisting of preprocessing, word-vector embedding, and classification. For every step, we borrowed concepts from related literature, combined them with self-devised approaches, and optimized the partial solution for one step at a time. Thereby, we were able to create a model that improved the classification accuracy by nearly 30 percentage points compared to the naive logistic regression baseline solution.
+\end{abstract}
+
+\input{sections/introduction}
+\input{sections/method}
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/summary}
+
+\pagebreak
+\bibliography{project-report}
+
+\end{document}

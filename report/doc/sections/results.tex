@@ -1,0 +1,63 @@
+\section{Results}\label{sec:results}
+
+\subsection{Baselines}\label{sec:results:baselines}
+
+We will use the following two algorithms as baselines throughout Section \ref{sec:results}:
+
+\begin{compactitem}
+	\item \textbf{\textit{BL1:}} Logistic regression classifier, \textit{GloVe} embeddings produced from the programming assignment script, no preprocessing (Score: 59.92\%)
+	\item \textbf{\textit{BL2:}} Logistic regression classifier, \textit{word2vec} embeddings, no preprocessing (Score: 77.21\%)
+\end{compactitem}
+
+\subsection{Preprocessing}
+
+\subsubsection{Setup and Process for Evaluation}
+
+We used two classifiers to test the influence of our preprocessing methods. First, we applied a linear classifier that builds on logistic regression (LR). Second, we evaluated our preprocessing method on a recurrent neural network (RNN) (LSTM cells, 1 layer, 150 hidden units, static).
+
+The goal is to improve classification accuracy (fraction of correctly classified tweets over all tweets); this is therefore the metric used to evaluate our preprocessing methods. Each method was evaluated in repeated experiments. We applied each preprocessing method individually and compared the scores to baseline. Next, we ran all combinations of the methods that had improved accuracy.
+
+\subsubsection{Results for Logistic Regression}
+
+\input{tables/lr-preprocessing-simple}
+
+In Table \ref{tab:lr-prep-results-single}, we show the accuracy effect of each method compared to the baseline score \textit{BL2}.
+
+The methods 3 and W reduced accuracy, the other methods improved it, likely because they reduce the number of embeddings and create indicative word associations. The method C worked better than D, congruent with the findings in \cite{bao2014role}. The impact of N is almost negligible, probably because it modifies tweets only marginally. Lastly, R yields a relatively big improvement for the small changes it makes.
+
+%\input{tables/lr-preprocessing-combinations}
+
+In Table \ref{tab:lr-prep-results-single}, a subset of the results for two preprocessing methods are shown. For the full results, please refer to the appendix.
+
+Note that the pairs involving R improved accuracy the most. However, it is unclear to us why these combinations lead to worse accuracy compared to R alone, especially since the combined preprocessing methods do not interfere with each other. Contrary to pairs involving R, the remaining combinations improved nearly by the sum of their single-scores. We assign this effect, again, to the reduced word embeddings and strengthening of common word associations.
+
+\subsubsection{Results for RNN}
+
+Table \ref{tab:rnn-prep-results-single} contains information on how the classification accuracy of a Recurrent Neutral Network (RNN) is influenced by our preprocessing methods. One quickly notices that, unlike in the case of a logistic regression, preprocessing the tweets leads to a decrease in accuracy in more cases.
+
+\input{tables/rnn-preprocessing-simple}
+%\input{tables/rnn-preprocessing-combinations}
+
+We notice that word cancellation is not necessarily a source of inaccuracy, since both improving as well as damaging methods (S and 3) perform some kind of word cancellation. Accuracy effects may thus depend on \textit{which} words are removed.
+
+Unexpectedly, the gains achievable when using method M alone are virtually neutralized when using it in combination with method C. Surprising on this note is that method C significantly helps method S.
+
+\subsubsection{Comparison of Classifiers}
+
+Our results show that the effect of a preprocessing method is heavily dependent on the used classifier. The following examples illustrate this finding:
+\begin{compactitem}
+	\item Negation replacement (N) greatly affects RNN whereas LR barely notices it.
+	\item Negation connection (C) greatly helped LR but is negligible for RNN.
+	\item Tag removal (R) has a positive effect on LR accuracy but a negative effect on RNN accuracy.
+\end{compactitem}
+
+In conclusion, handling same-letter sequences is a safe improvement, given that both LR and RNN seem to benefit from it. They also agreed on negation connection, although care should be taken when combining it with other preprocessing method. Lastly, our method to remove simple, common words also helps either model.
+
+\subsection{Word-Vector Embeddings}
+\input{tables/embedding-evaluation}
+We evaluated the effects of the different embedding methods from Section \ref{sec:method:embeddings} on classification accuracy. In these experiments, the results in Table \ref{tab:embedding-evaluation} were obtained: Clearly, \textit{word2vec} performs considerably better than \textit{GloVe}, independently of classifier and preprocessing used.
+\subsection{Classification}
+\input{tables/rnn-classification-results}
+Selected results of classification are displayed in Table \ref{tab:rnn-class-results}. All classification evaluation experiments were performed using a skipgram model of window size 5 and filtering words that occur less than 5 times with an embedding dimension of 100, a dropout of 0.75, and a vocabulary size of 89'000 on the test set.
+
+It is enlightening to analyze which model more accurately predicts the sentiment given the results obtained on the test set in the ranking system (Kaggle). In our study, we observe that in general, precision is increased by inserting more layers and keeping approximately the same number of parameters in our classifiers. Notwithstanding, the marginal benefit from incrementing the number of layers clearly diminishes. Secondly, adding an attention mechanism sightly boots the accuracy. However this pattern is no longer observable when using four layers. Surprisingly, the local attention does not obtain a better score than the global one. 

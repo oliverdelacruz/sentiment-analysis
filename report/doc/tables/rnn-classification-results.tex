@@ -1,0 +1,21 @@
+\begin{table*}
+	\centering
+	\begin{tabular}{|l  r  r  l  r|}
+		\hline
+		\textbf{Classifier} & \textbf{Units} & \textbf{Layers} & \textbf{Embeddings} & \textbf{Score} (\%) \\ \hline
+		Logistic Regression (\textit{BL1}) & - & - & GloVe & 59.92 \\ \hline
+		Logistic Regression (\textit{BL2}) & - & - & word2vec  & 77.21 \\ \hline
+		LSTM & 252 & 1 & word2vec & 87.22 \\ \hline
+		LSTM & 252 & 2 & word2vec & 87.38 \\ \hline
+		LSTM + Global Attention &  200 & 2 & word2vec & 87.52 \\ \hline
+		LSTM + Local Attention &  200 & 2 & word2vec & 87.56 \\ \hline				
+		LSTM & 190 & 3 & word2vec & 87.20 \\ \hline
+		LSTM + Global Attention & 190 & 3 & word2vec &  87.74 \\ \hline
+		LSTM + Local Attention &  190  & 3 & word2vec & 87.28 \\ \hline
+		LSTM & 150 & 4 & word2vec & 87.96 \\ \hline		
+		LSTM + Global Attention & 150 & 4 & word2vec & 87.72 \\ \hline
+		LSTM + Local Attention & 150 & 4 & word2vec & 87.67 \\ \hline		
+	\end{tabular}
+	\caption{Accuracy results of RNN classifier}
+	\label{tab:rnn-class-results}
+\end{table*}

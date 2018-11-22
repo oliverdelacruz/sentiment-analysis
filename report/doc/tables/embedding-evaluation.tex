@@ -1,0 +1,17 @@
+\begin{table}
+	\centering
+	\begin{tabular}{| l | l | l | r |}
+		\hline
+		\textbf{Embedding} & \textbf{Classifier} & \textbf{Preprocessing} & \textbf{Score} (\%) \\ \hline
+		\multirow{4}{*}{GloVe} & \multirow{2}{*}{LR} & None & 67.82 \\ \cline{3-4}
+		& & M & 68.42 \\ \cline{2-4}
+		& \multirow{2}{*}{RNN} & None & 75.36 \\ \cline{3-4}
+		& & M & 75.81 \\ \hline
+		\multirow{4}{*}{word2vec} & \multirow{2}{*}{LR} & None & 77.21 \\ \cline{3-4}
+		& & M & 77.44 \\ \cline{2-4}
+		& \multirow{2}{*}{RNN} & None & 81.24 \\ \cline{3-4}
+		& & M & 81.89 \\ \hline
+	\end{tabular}
+	\caption{Effects of performance on classification accuracy}
+	\label{tab:embedding-evaluation}
+\end{table}

@@ -1,0 +1,14 @@
+# Ignore specific file extensions
+*.log
+*.txt
+*.csv
+
+# Ignore specific folders
+**/data/
+*/data/
+*/data/*
+data/
+/data
+/data/
+.idea/
+.eclipse

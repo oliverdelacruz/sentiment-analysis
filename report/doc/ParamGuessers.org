@@ -1,0 +1,53 @@
+# -*- mode: org; org-link-file-path-type: relative; -*-
+#+TITLE: TBD, Twitter Sentiment Analysis
+#+AUTHOR: Andrea Canonica, Oliver De La Cruz, Claudio Röthlisberger, Simon Scherrer
+#+EMAIL: canandre@student.ethz.ch, oli, rclaudio@student.ethz.ch, simonsch@student.ethz.ch
+* Abstract
+  /NOTE: the abstract will be written after we have finished the other sections, as suggested in the
+  instructions for writing a scientific paper provided on the lecture website/
+* Introduction
+  - sentiment analysis is a current research topic
+  - although a specific problem, wide range of applications (publishing, economy, artificial
+    intelligence, etc.)
+  - in this particular case we analyzed twitter posts, classifying them as either positive or
+    negative
+* Our Method 
+** Twitter Dataset
+   - the dataset was provided on the course website
+   - 2 million posts, with approximately 1 millions posts per class (positive and negative)
+   - other datasets are available (e.g. from [[http://help.sentiment140.com/for-students/][Sentiment140]]) /NOTE: our dataset is probably a subset of this/
+   - emoticons were removed
+   - usernames (i.e. @-mentions) were replaced with a token
+   - urls were also replaced with a token
+   - hashtags were not altered
+   - similar to the procedure described in sections 2.2 and 2.3 of the paper [[file:../resources/Sentiment%20Analysis/TwitterDistantSupervision09.pdf][Twitter Sentiment
+     Classification using Distant Supervision]]
+** Preprocessing
+*** Challenges
+    - The language used in tweets differs from standard english. To fit the message into the 140
+      character prescribed by the system, an author may use a style similar to telegrams and
+      abbreviate words. These abbreviations can be rather unconventional and only have a meaning in
+      the context of the message.
+    - Because of the informal nature of communication, grammar and orthography are not valued as much
+      as with other means of communication.
+    - Tweets may contain hashtags which convey a meaning, but are not part of any sentence
+      (e.g. #blessed, or #thatsmylife).
+
+    The paper [[file:../resources/Preprocessing/The%20Role%20of%20Pre-Processing%20in%20Twitter%20Sentiment%20Analysis.pdf][The Role of Pre-Processing in Twitter Sentiment Analysis]] tries to address some of these
+    challenges.
+*** Hashtags
+    - /NOTE: Andrea's code treats hashtags as a distinct word of the corpus/
+** Word Embedding
+** Classification
+   - convolutional neural network (CNN)
+* Results
+** Preprocessing
+   /NOTE: show the effect of the preprocessing on the quality of the classifcation/
+** Classification
+*** Baseline
+    /NOTE: what will be use as the baseline to compare our method to?/
+* Discussion
+  - strenghts and weaknesses
+  - implications on the application
+* Summary
+  /NOTE: show our contribution/
